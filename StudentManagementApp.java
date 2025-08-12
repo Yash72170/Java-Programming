@@ -3,7 +3,6 @@ import java.util.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-// Student class to represent student data
 class Student implements Serializable {
     private static final long serialVersionUID = 1L;
     
@@ -32,7 +31,7 @@ class Student implements Serializable {
         this.enrollmentDate = LocalDate.now();
     }
     
-    // Getters and setters
+   
     public String getStudentId() { return studentId; }
     public void setStudentId(String studentId) { this.studentId = studentId; }
     
@@ -65,12 +64,12 @@ class Student implements Serializable {
     public LocalDate getEnrollmentDate() { return enrollmentDate; }
     public void setEnrollmentDate(LocalDate enrollmentDate) { this.enrollmentDate = enrollmentDate; }
     
-    // Add grade for a subject
+   
     public void addGrade(String subject, double grade) {
         grades.put(subject, grade);
     }
     
-    // Calculate GPA
+   
     public double calculateGPA() {
         if (grades.isEmpty()) return 0.0;
         double sum = grades.values().stream().mapToDouble(Double::doubleValue).sum();
@@ -84,7 +83,7 @@ class Student implements Serializable {
     }
 }
 
-// Main Student Management System class
+
 class StudentManagementSystem {
     private Map<String, Student> students;
     private Scanner scanner;
@@ -96,7 +95,7 @@ class StudentManagementSystem {
         loadStudentsFromFile();
     }
     
-    // Save students to file
+    
     private void saveStudentsToFile() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(DATA_FILE))) {
             oos.writeObject(students);
@@ -106,7 +105,7 @@ class StudentManagementSystem {
         }
     }
     
-    // Load students from file
+    
     @SuppressWarnings("unchecked")
     private void loadStudentsFromFile() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DATA_FILE))) {
@@ -119,12 +118,12 @@ class StudentManagementSystem {
         }
     }
     
-    // Generate unique student ID
+   
     private String generateStudentId() {
         return "STU" + String.format("%04d", students.size() + 1);
     }
     
-    // Add new student
+    
     public void addStudent() {
         System.out.println("\n=== Add New Student ===");
         
@@ -165,7 +164,7 @@ class StudentManagementSystem {
         }
     }
     
-    // View student details
+  
     public void viewStudent() {
         System.out.println("\n=== View Student ===");
         System.out.print("Enter Student ID: ");
@@ -179,7 +178,7 @@ class StudentManagementSystem {
         }
     }
     
-    // Display detailed student information
+    
     private void displayStudentDetails(Student student) {
         System.out.println("\n--- Student Details ---");
         System.out.println("Student ID: " + student.getStudentId());
@@ -201,7 +200,7 @@ class StudentManagementSystem {
         }
     }
     
-    // Update student information
+    
     public void updateStudent() {
         System.out.println("\n=== Update Student ===");
         System.out.print("Enter Student ID: ");
@@ -251,7 +250,7 @@ class StudentManagementSystem {
         System.out.println("Student information updated successfully!");
     }
     
-    // Delete student
+    
     public void deleteStudent() {
         System.out.println("\n=== Delete Student ===");
         System.out.print("Enter Student ID: ");
@@ -278,7 +277,7 @@ class StudentManagementSystem {
         }
     }
     
-    // Add grades for a student
+  
     public void addGrades() {
         System.out.println("\n=== Add Grades ===");
         System.out.print("Enter Student ID: ");
@@ -319,7 +318,7 @@ class StudentManagementSystem {
         System.out.println("All grades saved successfully!");
     }
     
-    // List all students
+   
     public void listAllStudents() {
         System.out.println("\n=== All Students ===");
         
@@ -335,7 +334,7 @@ class StudentManagementSystem {
         System.out.println("\nTotal students: " + students.size());
     }
     
-    // Search students by name or course
+    
     public void searchStudents() {
         System.out.println("\n=== Search Students ===");
         System.out.print("Enter search term (name or course): ");
@@ -355,7 +354,7 @@ class StudentManagementSystem {
         }
     }
     
-    // Generate reports
+    
     public void generateReports() {
         System.out.println("\n=== Reports ===");
         System.out.println("1. Students by Course");
@@ -409,7 +408,7 @@ class StudentManagementSystem {
                 .forEach(System.out::println);
     }
     
-    // Main menu
+  
     public void showMenu() {
         System.out.println("\n=== Student Management System ===");
         System.out.println("1. Add Student");
@@ -424,7 +423,7 @@ class StudentManagementSystem {
         System.out.print("Choose an option (1-9): ");
     }
     
-    // Run the application
+    
     public void run() {
         System.out.println("Welcome to Student Management System!");
         
@@ -478,10 +477,11 @@ class StudentManagementSystem {
     }
 }
 
-// Main class to run the application
+
 public class StudentManagementApp {
     public static void main(String[] args) {
         StudentManagementSystem sms = new StudentManagementSystem();
         sms.run();
     }
+
 }
